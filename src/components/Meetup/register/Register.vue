@@ -34,7 +34,7 @@
 
 <script>
 export default {
-    props: ['meetup'],
+    props: ['meetupId'],
     data(){
         return {
             register: false
@@ -49,7 +49,12 @@ export default {
     },
     methods: {
         onAgree(){
+            if(this.userIsRegister){
+                this.$store.dispatch('unRegisterUserFromMeetup', this.meetupId)
+            }else{
+                this.$store.dispatch('registerUserForMeetup', this.meetupId)
 
+            }
         }
     }
 }
