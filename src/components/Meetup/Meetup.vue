@@ -21,16 +21,17 @@
                   </v-card-title>
                   <v-img :src="meetup.imageUrl" height="350px"></v-img>
                   <v-card-text>
-                      <div class="info--text">{{meetup.date | date}} - {{meetup.location}}</div>
+                      <div class="info--text mb-4">{{meetup.date | date}} - {{meetup.location}}</div>
                       <div>
                           <edit-date :meetup="meetup"/>
+                          <edit-time :meetup="meetup" v-if="userIsCreator"/>
                       </div>
                       <br>
                       <p>   {{meetup.description}}</p>
                   </v-card-text>
                   <v-card-actions>
                       <v-spacer></v-spacer>
-                      <v-btn class="pink lighten-4">Register</v-btn>
+                      <register/>
                   </v-card-actions>
               </v-card>
           </v-flex>
@@ -41,8 +42,15 @@
 <script>
 import EditDate from './edit/EditDate.vue'
 import editMeetup from './edit/editMeetup.vue'
+import EditTime from './edit/EditTime.vue'
+import Register from './register/Register.vue'
 export default {
-  components: { editMeetup, EditDate },
+  components: { 
+      editMeetup, 
+      EditDate, 
+      EditTime, 
+      Register,
+      },
     props: ['id'],
     computed:{
         meetup(){
