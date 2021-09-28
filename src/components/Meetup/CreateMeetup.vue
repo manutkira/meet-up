@@ -37,7 +37,7 @@
                type="file"
                style="display: none"
                ref="fileInput"
-               accept="image/*" 
+               accept="image/*"
                @change="onFilePick"/>
                
             </v-flex>

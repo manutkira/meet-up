@@ -31,7 +31,7 @@
                   </v-card-text>
                   <v-card-actions>
                       <v-spacer></v-spacer>
-                      <register :meetupId="meetup.id"/>
+                      <register v-if="!userIsCreator" :meetupId="meetup.id"/>
                   </v-card-actions>
               </v-card>
           </v-flex>

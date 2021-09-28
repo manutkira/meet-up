@@ -17,7 +17,7 @@
                   <v-flex xs12>
                       <v-time-picker v-model="editableTime" style="width: 100%" actions format="24hr">
                           <template slot-scope="{save, cancel}">
-                              <v-btn class="red darken-1" @click="editDialog">Close</v-btn>
+                              <v-btn class="red darken-1" @click="editDialog = false">Close</v-btn>
                               <v-btn class="red darken-1" @click="onSaveChange">Save</v-btn>
                           </template>
                       </v-time-picker>
@@ -53,6 +53,7 @@ export default {
     created() {
 
         this.editableTime = new Date(this.meetup.date).toTimeString()
+        this.editableTime = this.editableTime.slice(0, 5)
         //  let date = new Date(this.meetup.date) //set Date to the date of meetup
 
         // let day = date.getUTCDate()  // +1 cuz the days are counted from 0-30
